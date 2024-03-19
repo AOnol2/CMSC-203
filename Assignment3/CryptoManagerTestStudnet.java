@@ -15,28 +15,40 @@ class CryptoManagerTestStudnet {
 	}
 
 	@Test
-	void testIsStringInBounds() {
-		fail("Not yet implemented");
+	public void testStringInBounds() {
+	    assertTrue(CryptoManager.isStringInBounds("FOLLOW THE RABBIT"));
+	    assertTrue(CryptoManager.isStringInBounds("UNUSUAL CHARS #$&"));
+	    assertFalse(CryptoManager.isStringInBounds("CURVED BRACES {} ARE OUT"));
+	    assertFalse(CryptoManager.isStringInBounds("VERTICAL BAR | IS OUT TOO"));
 	}
 
 	@Test
-	void testCaesarEncryption() {
-		fail("Not yet implemented");
+	public void testCaesarEncryption() {
+	    assertEquals("The selected string is not in bounds, Try again.", CryptoManager.caesarEncryption("OUT OF BOUNDS[]", 5));
+	    assertEquals("WKLQN RXWVLGH WKH ER[", CryptoManager.caesarEncryption("THINK OUTSIDE THE BOX", 3));
+	    assertEquals("YKIXKZ SKKZOTM", CryptoManager.caesarEncryption("VENICE BEACH", 6));
 	}
 
 	@Test
-	void testBellasoEncryption() {
-		fail("Not yet implemented");
+	public void testCaesarDecryption() {
+	    assertEquals("SECRET MESSAGE", CryptoManager.caesarDecryption("VHFUHW PHVVDJH", 3));
+	    assertEquals("BACK TO BASICS", CryptoManager.caesarDecryption("EDFN WR EDVICS", 3));
+	    assertEquals("The selected string is not in bounds, Try again.", CryptoManager.caesarDecryption("OUTSIDE OF BOUNDS[]", 100));
 	}
 
 	@Test
-	void testCaesarDecryption() {
-		fail("Not yet implemented");
+	public void testBellasoEncryption() {
+	    assertEquals("WXMJXG DUCNWP UWWI", CryptoManager.bellasoEncryption("HELLO WORLD AGAIN", "KEYKEYKEY"));
+	    assertEquals("The selected string is not in bounds, Try again.", CryptoManager.bellasoEncryption("INVALID STRING!", "VALIDKEY"));
+	    assertEquals("MXCCZ VXMVX OZIOV", CryptoManager.bellasoEncryption("SECRET MESSAGE", "KEY"));
+	    assertEquals("SXDDT EDBTR TEXEI", CryptoManager.bellasoEncryption("PLAIN TEXT", "LONGERKEY"));
 	}
 
 	@Test
-	void testBellasoDecryption() {
-		fail("Not yet implemented");
+	public void testBellasoDecryption() {
+	    assertEquals("HELLO WORLD AGAIN", CryptoManager.bellasoDecryption("WXMJXG DUCNWP UWWI", "KEYKEYKEY"));
+	    assertEquals("The selected string is not in bounds, Try again.", CryptoManager.bellasoDecryption("INVALID ENCRYPTED!", "SOMEKEY"));
+	    assertEquals("SECRET MESSAGE", CryptoManager.bellasoDecryption("MXCCZ VXMVX OZIOV", "KEY"));
+	    assertEquals("PLAIN TEXT", CryptoManager.bellasoDecryption("SXDDT EDBTR TEXEI", "LONGERKEY"));
 	}
-
 }
